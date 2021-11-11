@@ -1,20 +1,20 @@
 <template>
   <div id="app" class="big-container">
     <v-header></v-header>
-    <!-- <v-emoji></v-emoji> -->
+    <v-emoji></v-emoji>
     <v-piano></v-piano>
   </div>
 </template>
 
 <script>
 import VHeader from '@/components/VHeader'
-// import VEmoji from '@/components/VEmoji'
+import VEmoji from '@/components/VEmoji'
 import VPiano from  '@/components/VPiano'
 export default {
   name: "App",
   components: {
     VHeader,
-    // VEmoji,
+    VEmoji,
     VPiano,
   },
 };

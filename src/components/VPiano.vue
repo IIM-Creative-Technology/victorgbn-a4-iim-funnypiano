@@ -91,11 +91,29 @@ export default {
   },
 
   mounted() {
-      
+    this.vEmoji = this.$parent.$children[1];
+    this.audio = document.createElement("audio");
+    document.addEventListener("keydown", (e) => {
+      console.log(e.keyCode);
+      const el = this.$el.querySelector(`[data-keycode="${e.keyCode}"`);
+      if (el) {
+        el.click();
+        el.style.backgroundColor = "#ffd12d";
+      } 
+    });
+    document.addEventListener("keyup", (e) => {
+       const el = this.$el.querySelector(`[data-keycode="${e.keyCode}"`);
+        el.style.backgroundColor = "";
+    })
   },
 
   methods: {
-    
+    onClick(note) {
+      const name = encodeURIComponent(note.sound);
+      this.audio.src = `/assets/sounds/${name}.mp3`;
+      this.audio.play();
+      this.vEmoji.pickEmoji();
+    },
   },
 };
 </script>
@@ -142,16 +160,16 @@ export default {
   left: 66px;
 }
 .key-black:nth-child(2) {
-  left: 140px;
+  left: 144px;
 }
 .key-black:nth-child(3) {
-  left: 285px;
+  left: 295px;
 }
 .key-black:nth-child(4) {
-  left: 358px;
+  left: 370px;
 }
 .key-black:nth-child(5) {
-  left: 431px;
+  left: 447px;
 }
 
 @media (max-width: 700px) {
@@ -165,19 +183,19 @@ export default {
     width: 20px;
   }
   .key-black:nth-child(1) {
-    left: 49px;
+    left: 50px;
   }
   .key-black:nth-child(2) {
-    left: 98px;
+    left: 102px;
   }
   .key-black:nth-child(3) {
-    left: 198px;
+    left: 208px;
   }
   .key-black:nth-child(4) {
-    left: 248px;
+    left: 260px;
   }
   .key-black:nth-child(5) {
-    left: 298px;
+    left: 312px;
   }
 }
 
