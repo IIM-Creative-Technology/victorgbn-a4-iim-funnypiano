@@ -4,8 +4,15 @@ on:
   push:
     branches:
       - main
+    pull_request:
+      branches:
+        - main
 
 jobs:
+  lint:
+    script:
+      npm run lint
+
   build:
     runs-on: ubuntu-latest
     steps:
