@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="big-container">
+    <v-header></v-header>
+    <v-emoji></v-emoji>
+    <v-piano></v-piano>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import VHeader from '@/components/VHeader'
+import VEmoji from '@/components/VEmoji'
+import VPiano from  '@/components/VPiano'
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    VHeader,
+    VEmoji,
+    VPiano,
+  },
+};
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="postcss" scoped>
+.big-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .big-container {
+    justify-content: space-around;
+  }
+  .container-piano,
+  .container-emoji,
+  .container-title {
+    margin: 0;
+  }
 }
 </style>
