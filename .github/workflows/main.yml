@@ -11,8 +11,7 @@ on:
 jobs:
   lint:
     steps:
-      run:
-        npm run lint
+      run: npm run lint
 
   build:
     runs-on: ubuntu-latest
