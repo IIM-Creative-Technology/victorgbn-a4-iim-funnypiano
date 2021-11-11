@@ -37,3 +37,38 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "iim-a4-funny-piano-project"
           heroku_email: "vandrasinho@gmail.com"
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      run: npm ci
+    - name: run lint
+      run: npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      run: npm ci
+    - name: run build
+      run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "iim-a4-funny-piano-dev"
+          heroku_email: "vandrasinho@gmail.com"
