@@ -9,6 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@giphy/js-fetch-api": "^4.1.2",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "vue": "^2.6.11"
