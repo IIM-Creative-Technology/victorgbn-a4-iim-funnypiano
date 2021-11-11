@@ -22,6 +22,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      run: npm ci
+    - name: run build
+      run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
