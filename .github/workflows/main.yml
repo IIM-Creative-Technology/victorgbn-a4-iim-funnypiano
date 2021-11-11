@@ -10,8 +10,9 @@ on:
 
 jobs:
   lint:
-    script:
-      npm run lint
+    steps:
+      script:
+        npm run lint
 
   build:
     runs-on: ubuntu-latest
