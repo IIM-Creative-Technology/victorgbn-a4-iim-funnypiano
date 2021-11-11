@@ -1,0 +1,41 @@
+name: Deploy Main
+
+on:
+  push:
+    branches:
+      - develop
+    pull_request:
+      branches:
+        - develop
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      run: npm ci
+    - name: run lint
+      run: npm run lint
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm ci
+      run: npm ci
+    - name: run build
+      run: npm run build
+
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "iim-a4-funny-piano-dev"
+          heroku_email: "vandrasinho@gmail.com"
